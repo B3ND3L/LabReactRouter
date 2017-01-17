@@ -1,25 +1,37 @@
 import React from 'react'
 import NavLink from './NavLink'
+import {connect} from 'react-redux'
 import './Sensors.css'
 
 class Sensors extends React.Component {
 
-  constructor(props){
-    super(props);
-      this.state = {
-        value: '',
-      };
-  }
   render() {
+
+   let list = [];
+   for(var i=0 ; i < this.props.sensors.length;i++){
+     list.push(<li key={i}><NavLink to={"/sensors/"+this.props.sensors[i]} >{this.props.sensors[i]}</NavLink></li>);
+   }
     return (
     <div className='wrapper'>
       <div className='nav'>
-        <ul className='liste'>
-          <li><NavLink to="/sensors/TempBureau" >Temp Bureau</NavLink></li>
-        </ul>
+        {list}
       </div>
       {this.props.children}
     </div>
   )}
 }
-export default Sensors;
+export default connect((state, ownProps) => {
+  let sensors = state.sensors;
+  let names = [];
+  for (var s in sensors){
+    if (Object.prototype.hasOwnProperty.call("name", s)) {
+      names.push(sensors[s].name);
+    }
+  }
+  return {
+    sensors: names,
+  }
+},
+(dispatch) => ({
+
+}))(Sensors);

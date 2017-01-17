@@ -4,7 +4,7 @@ import mqtt from 'mqtt'
 export class MQTTConnector {
   constructor(url) {
     this.url = url;
-    devices = [];
+    this.devices = [];
 
     var clientMQTT = mqtt.connect(url);
 
