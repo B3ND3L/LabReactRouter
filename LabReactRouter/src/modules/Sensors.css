@@ -1,3 +1,9 @@
+.wrapper {
+  margin: auto;
+  flex: 1 1 auto; /* occupe la hauteur restante */
+  display: flex; /* crée un contexte flex pour ses enfants */
+}
+
 .nav {
   width: 15em;
   order: -1; /* nav s'affiche en premier */
@@ -13,4 +19,9 @@
   padding: 10px 5px 10px 5px;
   background-color: #bfd6cc;
   border: SOLID 1px #000000;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #000000;
 }

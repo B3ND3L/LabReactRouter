@@ -1,15 +1,25 @@
 import React from 'react'
 import NavLink from './NavLink'
-import styles from './Sensors.css'
+import './Sensors.css'
 
-export default React.createClass({
+class Sensors extends React.Component {
 
+  constructor(props){
+    super(props);
+      this.state = {
+        value: '',
+      };
+  }
   render() {
     return (
-    <div className={styles.nav}>
-      <ul className={styles.liste}>
-        <li><NavLink to="/TempBureau" >Temp Bureau</NavLink></li>
-      </ul>
+    <div className='wrapper'>
+      <div className='nav'>
+        <ul className='liste'>
+          <li><NavLink to="/sensors/TempBureau" >Temp Bureau</NavLink></li>
+        </ul>
+      </div>
+      {this.props.children}
     </div>
   )}
-})
+}
+export default Sensors;
